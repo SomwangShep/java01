@@ -35,7 +35,6 @@ var usrAns = [];//this varible keep the answer from the user
 var chk = [];//This varible to store correct/incorrect
 
 var spawn = require('child-process-promise').spawn;
-// var fn = __dirname + '/public/Quiz1.jar';
 var fn = __dirname + '/../public/Quiz1.jar';
 
 router.get('/quiz1', (req, res)=>
@@ -55,7 +54,6 @@ router.get('/quiz1', (req, res)=>
     // console.log(`i: ${i}`);
     var qr = data.toString();
     rawData[t] = qr;//this saving in db
-    // console.log(qr);
     qr = qr.split(";");
     
     hea[t] = qr[0].trim();
@@ -125,7 +123,7 @@ router.post('/quiz1',(req,res) => {
   if (i < loop - 1)  {
     res.redirect('back');
   } else {
-    res.render('quizzes/quizAns', {
+    res.render('quizzes/quizAns_ejs.ejs', {
         hea: `${hea[0]}`,
           qs: `${qs[0]}`,
         prt: `${prt[0]}`,
@@ -199,6 +197,7 @@ router.post('/quiz1',(req,res) => {
       score: `${score}`,
         cnt: `${i+1}`
     });
+    
     /*-----------------------------
           saving data
     ------------------------------*/
